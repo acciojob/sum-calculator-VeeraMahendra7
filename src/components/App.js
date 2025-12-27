@@ -4,7 +4,7 @@ import './../styles/App.css';
 
 const App = () => {
   const [nums, setNums] = useState([]);
-  const [curr, setCurr] = useState();
+  const [curr, setCurr] = useState('');
   const [sum, setSum] = useState(0);
 
   useEffect(()=>{
@@ -20,8 +20,8 @@ const App = () => {
 
 
   const handleChange = (e) => {
-    const value = parseInt(e.target.value);
-    setCurr(e.target.value);
+    const value = parseInt(e.target.value, 10);
+    setCurr(value);
 
     if(!isNaN(value)){
         setNums(prev => [...prev, value]);
@@ -31,7 +31,7 @@ const App = () => {
   return (
     <div>
         <h1>Sum Calculator</h1>
-        <input type="number" value={curr} onChange={handleChange} placeholder="Enter a Number"/>
+        <input type="number" value={curr} onChange={handleChange} placeholder="Enter a number"/>
         {
           nums.length > 0 && (
             <p>Sum: {sum}</p>
